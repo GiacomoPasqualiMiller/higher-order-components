@@ -17,7 +17,6 @@ export const withEditableResource = (Component, resourcePath, resourceName) => {
     }, []);
 
     const onChange = (changes) => {
-      console.log(changes);
       setData({ ...data, ...changes });
     };
     const onDelete = () => {
@@ -39,6 +38,7 @@ export const withEditableResource = (Component, resourcePath, resourceName) => {
       [`onChange${capitalize(resourceName)}`]: onChange,
       [`onSave${capitalize(resourceName)}`]: onSave,
       [`onReset${capitalize(resourceName)}`]: onReset,
+      [`onDelete${capitalize(resourceName)}`]: onDelete,
     };
 
     return <Component {...props} {...resourceProps} />;
